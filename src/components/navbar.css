@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;1,300&display=swap'); 
+/* Add a background color to the navbar */
+.navbar {
+    background-color: #333;
+  }
+  
+  /* Style the logo */
+  .navbar .logo {
+    float: left;
+    display: block;
+    font-size: 1.5em;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+  }
+  
+  /* Style the links in the navbar */
+  .navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    text-decoration: none;
+  }
+  
+  /* Style the dropdown menu */
+  .navbar .dropdown {
+    float: right;
+    position: relative;
+  }
+  
+  /* Style the dropdown button */
+  .navbar .dropdown .dropbtn {
+    display: block;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: #333;
+  }
+  
+  /* Style the dropdown menu items */
+  .navbar .dropdown-content a {
+    display: block;
+    color: white;
+    text-decoration: none;
+  }
+  
+  /* Style the dropdown menu when it is shown */
+  .navbar .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
