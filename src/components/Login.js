@@ -1,5 +1,12 @@
-import React,{useState} from "react"
+import React,{useState,useHistory} from "react"
+import Home from "./Home";
+import { NavbarLink } from "./Navbar.style";
+import { LoginForum } from "./Login.style";
+import { LoginButt } from "./Login.style";
 
+const LoginForm = () => {
+    const history = useHistory();
+}
 export const Login = () => {
     const [username,setUsername]=useState('')
     const [password,setPassword]=useState('');
@@ -23,12 +30,14 @@ export const Login = () => {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              username,
-              password,
+              user:{
+                  username,
+                  password,
+              }  
             }),
           });
           if (response.ok) {
-            // Redirect the user to the home page
+            history.push('/')
           } else {
             setError('Invalid username or password');
           }
@@ -38,7 +47,7 @@ export const Login = () => {
       };
     
       return (
-        <form onSubmit={handleSubmit}>
+        <LoginForum onSubmit={handleSubmit}>
           <label htmlFor="username">Username:</label>
           <input
             type="text"
@@ -54,8 +63,8 @@ export const Login = () => {
             onChange={handlePasswordChange}
           />
           {error && <p className="error">{error}</p>}
-          <button type="submit">Login</button>
-        </form>
+          <LoginButt type="submit">Login</LoginButt>
+        </LoginForum>
       );
     };
     
