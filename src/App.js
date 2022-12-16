@@ -5,17 +5,19 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Profile from './components/Profile';
 import Home from './components/Home';
 import { Post } from './components/Post';
+import { Login } from './components/Login';
 
 function App() {
   return (
     <div className="App">
 
-      
+       
 
       <Router>
         <Navbar/> 
-        <Routes>
+        <Routes> 
           <Route path='/' element={<Home/>}/>
+          <Route path='/Login' element={<Login/>}/>
           <Route path='/Profile'element={<Profile/>}/>
           <Route path='/Post'element={<Post/>}/>
         </Routes>
@@ -24,5 +26,5 @@ function App() {
       </div>
   );
 }
-
+ 
 export default App;
