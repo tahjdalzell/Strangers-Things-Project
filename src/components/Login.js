@@ -1,44 +1,46 @@
-import React,{useState,useHistory} from "react"
+import React,{useState,useNavigate} from "react"
 import Home from "./Home";
 import { NavbarLink } from "./Navbar.style";
 import { LoginForum } from "./Login.style";
 import { LoginButt } from "./Login.style";
 
-const LoginForm = () => {
-    const history = useHistory();
-}
+
 export const Login = () => {
     const [username,setUsername]=useState('')
     const [password,setPassword]=useState('');
     const [error, setError]=useState('');
+    const navigate = useNavigate()
+    
 
+    
     const handleUsenameChange = (e) => {
         setUsername(e.target.value);
     }
-
+    
     const handlePasswordChange =(e)=> {
         setPassword(e.target.value);
-
+        
     }
-
+  
+    
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-          const response = await fetch('https://strangers-things.herokuapp.com/api/2209-ftb-ct-web-pt/users/login', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              user:{
-                  username,
-                  password,
-              }  
-            }),
-          });
-          if (response.ok) {
-            history.push('/')
-          } else {
+            const response = await fetch('https://strangers-things.herokuapp.com/api/2209-ftb-ct-web-pt/users/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    user:{
+                        username,
+                        password,
+                    }  
+                }),
+            });
+            if (response.ok) {
+                navigate('/')
+            } else {
             setError('Invalid username or password');
           }
         } catch (error) {
