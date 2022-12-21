@@ -1,11 +1,12 @@
-import React,{useState,useNavigate} from "react"
+import React,{useState} from "react"
 import Home from "./Home";
 import { NavbarLink } from "./Navbar.style";
 import { LoginForum } from "./Login.style";
 import { LoginButt } from "./Login.style";
+import {useNavigate} from "react-router-dom"
 
-
-export const Login = () => {
+export const Login = ({saveToken}) => {
+  const [loggedIn, setLoggedIn] = useState(false);
     const [username,setUsername]=useState('')
     const [password,setPassword]=useState('');
     const [error, setError]=useState('');
@@ -38,8 +39,11 @@ export const Login = () => {
                     }  
                 }),
             });
+            const json = await response.json()
             if (response.ok) {
-                navigate('/')
+                navigate('/Profile')
+                saveToken(json.data.token)
+                setLoggedIn(true)
             } else {
             setError('Invalid username or password');
           }

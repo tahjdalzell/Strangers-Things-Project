@@ -23,6 +23,7 @@ return <NavbarContainer extendedNav={extendedNav}>
       <NavbarLink to="/">Home</NavbarLink>
       <NavbarLink to="/Post">Post</NavbarLink>
       <NavbarLink to="/Profile">Profile</NavbarLink>
+      <NavbarLink to='/Register/'>Register</NavbarLink>
       <NavbarLink to="/Login">Login</NavbarLink>
       <OpenLinksButton onClick={()=>{
         setExtendedNav((curr)=> !curr)
