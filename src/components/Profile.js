@@ -1,4 +1,6 @@
 import React from 'react'
+import { json } from 'react-router-dom';
+import { Login } from './Login';
 
 
 
@@ -7,8 +9,9 @@ import React from 'react'
     return (
         <section>
             <h1>
-                Welcome to Profile Page
+                Welcome
             </h1>
+            <p>{json.data.username}</p>
         </section>
     )
 }

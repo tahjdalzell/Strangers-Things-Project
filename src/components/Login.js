@@ -3,14 +3,15 @@ import Home from "./Home";
 import { NavbarLink } from "./Navbar.style";
 import { LoginForum } from "./Login.style";
 import { LoginButt } from "./Login.style";
-import {useNavigate} from "react-router-dom"
+import {json, useNavigate} from "react-router-dom"
 
 export const Login = ({saveToken}) => {
-  const [loggedIn, setLoggedIn] = useState(false);
     const [username,setUsername]=useState('')
     const [password,setPassword]=useState('');
     const [error, setError]=useState('');
     const navigate = useNavigate()
+    // const [isLoggedIn, setIsLoggedIn] = useState(false);
+
     
 
     
@@ -43,16 +44,26 @@ export const Login = ({saveToken}) => {
             if (response.ok) {
                 navigate('/Profile')
                 saveToken(json.data.token)
-                setLoggedIn(true)
+                // setIsLoggedIn(true)
             } else {
             setError('Invalid username or password');
           }
         } catch (error) {
           setError('An error occurred while logging in');
         }
+        // if (json.data.username != '') {
+        //   setIsLoggedIn(true)
+        // }
       };
-    
+       
+      const Logout = () => {
+        console.log('Logged Out !')
+      }
+     
       return (
+        // <div>
+        //   {!isLoggedIn && (
+
         <LoginForum onSubmit={handleSubmit}>
           <label htmlFor="username">Username:</label>
           <input
@@ -71,6 +82,10 @@ export const Login = ({saveToken}) => {
           {error && <p className="error">{error}</p>}
           <LoginButt type="submit">Login</LoginButt>
         </LoginForum>
-      );
-    };
+          )}
+        //   {isLoggedIn && <h1> Welcome, {json.data.username}</h1>}
+
+        // </div>
+      
+    // };
     

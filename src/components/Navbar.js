@@ -1,12 +1,15 @@
-import React, {useState} from "react";
-import { Link } from "react-router-dom";
-import Home from "./Home";
-import Post from "./Post";
-import Profile from "./Profile";
+import React, {useState,useEffect,useContext} from "react";
+import { createContext } from "react";
 import {OpenLinksButton,Logo,NavbarLink,NavbarlinkContainer,NavbarextendedCont,NavbarinnerContainer,NavbarContainer, LeftContainer, RightContainer, NavbarLinkExtended} from './Navbar.style'
 import LogoImg from './logo.png'
+import { Link } from "react-router-dom";
+
+
+
 const NavBar = () => {
-  const [extendedNav, setExtendedNav] = useState(false)
+
+const [extendedNav, setExtendedNav] = useState(false)
+
 return <NavbarContainer extendedNav={extendedNav}>
  
 <NavbarinnerContainer>
@@ -24,7 +27,9 @@ return <NavbarContainer extendedNav={extendedNav}>
       <NavbarLink to="/Post">Post</NavbarLink>
       <NavbarLink to="/Profile">Profile</NavbarLink>
       <NavbarLink to='/Register/'>Register</NavbarLink>
-      <NavbarLink to="/Login">Login</NavbarLink>
+      
+              <NavbarLink to="/Login">Login</NavbarLink>
+      {/* {ternary statement to render login as logout} */}
       <OpenLinksButton onClick={()=>{
         setExtendedNav((curr)=> !curr)
       }}>{extendedNav ? <>&#10005;</>:<>&#8801;</>};</OpenLinksButton>
