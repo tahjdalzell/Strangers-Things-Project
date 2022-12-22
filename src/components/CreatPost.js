@@ -12,7 +12,7 @@ export const CreatPost = ({ token }) => {
   const [price, setPrice] = useState("");
   const [location, setLocation] = useState("");
   const [willDeliver, setWillDeliver] = useState(false);
-
+ 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {

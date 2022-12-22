@@ -15,14 +15,8 @@ import {
 import LogoImg from "./logo.png";
 import { Link, Navigate } from "react-router-dom";
 
-const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
+const NavBar = ({ token, setToken, logout }) => {
   const [extendedNav, setExtendedNav] = useState(false);
-
-  const logout = () => {
-    setIsLoggedIn(false);
-    localStorage.removeItem("myToken");
-    Navigate("/Profile");
-  };
 
   return (
     <NavbarContainer extendedNav={extendedNav}>
@@ -38,7 +32,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
             <NavbarLink to="/CreatPost">Make Post</NavbarLink>
             <NavbarLink to="/Profile">Profile</NavbarLink>
             <NavbarLink to="/Register/">Register</NavbarLink>
-            {!isLoggedIn ? (
+            {!token ? (
               <NavbarLink to="/Login">Login</NavbarLink>
             ) : (
               <button onClick={logout}>Logout</button>

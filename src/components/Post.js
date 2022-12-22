@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { PostContainer } from "./Post.style";
+import { DeletePost } from "./ DeletePost";
 
-export const Post = () => {
+export const Post = ({token}) => {
   const [post, setPost] = useState([]);
+  // const token = localStorage.getItem("myToken")
 
   const getPost = async () => {
     try {
       const respone = await fetch(
-        "https://strangers-things.herokuapp.com/api/2209-ftb-ct-web-pt/posts"
+        "https://strangers-things.herokuapp.com/api/2209-ftb-ct-web-pt/posts",{
+          headers:{
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          }
+        }
       );
       const apiPost = await respone.json();
       console.log(apiPost);
@@ -30,6 +37,11 @@ export const Post = () => {
               <p>{e.price}</p>
 
               <span>{e.author.username}</span>
+              {e.isAuthor  ? 
+<DeletePost token={token} postid={e._id}/> : null}
+
+              
+              
             </div>
           );
         })}

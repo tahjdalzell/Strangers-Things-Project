@@ -5,7 +5,7 @@ import { LoginForum } from "./Login.style";
 import { LoginButt } from "./Login.style";
 import { json, useNavigate } from "react-router-dom";
 
-export const Login = ({ saveToken , setIsLoggedIn }) => {
+export const Login = ({ saveToken, setIsLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -40,9 +40,9 @@ export const Login = ({ saveToken , setIsLoggedIn }) => {
       );
       const json = await response.json();
       if (response.ok) {
-        navigate("/Profile");
         saveToken(json.data.token);
         setIsLoggedIn(true);
+        navigate("/Profile");
       } else {
         setError("Invalid username or password");
       }
