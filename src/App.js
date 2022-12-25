@@ -9,12 +9,14 @@ import {
 } from "react-router-dom";
 import Profile from "./components/Profile";
 import Home from "./components/Home";
+import { Message, MessageForm, MessagesList } from "./components/Msger";
 import { Post } from "./components/Post";
 import { Login } from "./components/Login";
 import { useState } from "react";
 import { Register } from "./components/Register";
 import { CreatPost } from "./components/CreatPost";
 import { DeletePost } from "./components/ DeletePost";
+import { SearchBar } from "./components/SearchBar";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -33,7 +35,9 @@ function App() {
     <div className="App">
       <Router>
         {/* <DeletePost token={token} /> */}
+
         <Navbar logout={logout} token={token} />
+        <SearchBar/>
         <Routes>
           <Route
             path="/Register"
@@ -43,11 +47,18 @@ function App() {
           <Route
             path="/Login"
             element={
-              <Login setIsLoggedIn={setIsLoggedIn} saveToken={saveToken} />
+              <Login
+                setIsLoggedIn={setIsLoggedIn}
+                isLoggedIn={isLoggedIn}
+                saveToken={saveToken}
+              />
             }
           />
           <Route path="/Profile" element={<Profile token={token} />} />
-          <Route path="/Post" element={<Post token={token} />} />
+          <Route
+            path="/Post"
+            element={<Post isLoggedIn={isLoggedIn} token={token} />}
+          />
           <Route
             path="/CreatPost"
             element={<CreatPost token={token} />}

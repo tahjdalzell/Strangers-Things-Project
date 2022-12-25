@@ -1,12 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import { json } from "react-router-dom";
+import { APIurl } from "../api";
 import { Login } from "./Login";
 import { LoginButt } from "./Login.style";
 
 
 export const CreatPost = ({ token }) => {
-    console.log(token)
+    // console.log(token)
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -17,7 +18,7 @@ export const CreatPost = ({ token }) => {
     event.preventDefault();
     try {
       const response = await fetch(
-        "https://strangers-things.herokuapp.com/api/2209-ftb-ct-web-pt/posts",
+        `${APIurl}/posts`,
         {
           method: "POST",
           headers: {

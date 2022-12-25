@@ -4,8 +4,11 @@ import { NavbarLink } from "./Navbar.style";
 import { LoginForum } from "./Login.style";
 import { LoginButt } from "./Login.style";
 import { json, useNavigate } from "react-router-dom";
+import { APIurl } from "../api";
 
-export const Login = ({ saveToken, setIsLoggedIn }) => {
+export const Login = (props) => {
+  const { saveToken, setIsLoggedIn, isLoggedIn } = props;
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -24,7 +27,7 @@ export const Login = ({ saveToken, setIsLoggedIn }) => {
     event.preventDefault();
     try {
       const response = await fetch(
-        "https://strangers-things.herokuapp.com/api/2209-ftb-ct-web-pt/users/login",
+        `${APIurl}/users/login`,
         {
           method: "POST",
           headers: {
@@ -42,6 +45,7 @@ export const Login = ({ saveToken, setIsLoggedIn }) => {
       if (response.ok) {
         saveToken(json.data.token);
         setIsLoggedIn(true);
+        console.log(isLoggedIn);
         navigate("/Profile");
       } else {
         setError("Invalid username or password");
@@ -53,10 +57,7 @@ export const Login = ({ saveToken, setIsLoggedIn }) => {
     //   setIsLoggedIn(true)
     // }
   };
-
-  const Logout = () => {
-    console.log("Logged Out !");
-  };
+  console.log(isLoggedIn);
 
   return (
     // <div>

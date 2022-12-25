@@ -1,24 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { PostContainer } from "./Post.style";
 import { DeletePost } from "./ DeletePost";
+import  {Message} from "./Msger"
+import { APIurl, PostApiCall } from "../api";
 
-export const Post = ({token}) => {
-  const [post, setPost] = useState([]);
+
+export const Post = (props) => {
+  const {token,isLoggedIn} = props
+  const [posts, setPosts] = useState([]);
+  console.log(isLoggedIn)
   // const token = localStorage.getItem("myToken")
 
   const getPost = async () => {
     try {
-      const respone = await fetch(
-        "https://strangers-things.herokuapp.com/api/2209-ftb-ct-web-pt/posts",{
-          headers:{
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
-          }
-        }
-      );
-      const apiPost = await respone.json();
-      console.log(apiPost);
-      setPost(apiPost.data.posts);
+      const postapi = await PostApiCall({token})
+      console.log(postapi)
+      
+      setPosts(postapi.posts);
     } catch (err) {
       console.log("error");
     }
@@ -30,17 +28,17 @@ export const Post = ({token}) => {
     <section>
       <h1>Post Page</h1>
       <PostContainer>
-        {post.map((e, i) => {
+        {posts.map((post, i) => {
           return (
             <div key={i}>
-              <h1>{e.title}</h1>
-              <p>{e.price}</p>
+              <h1>{post.title}</h1>
+              <p>{post.price}</p>
 
-              <span>{e.author.username}</span>
-              {e.isAuthor  ? 
-<DeletePost token={token} postid={e._id}/> : null}
+              <span>{post.author.username}</span>
+              {post.isAuthor  &&
+<DeletePost token={token} postid={post._id}/> }
 
-              
+<Message messages={post.messages} token={token} postid={post._id} />
               
             </div>
           );

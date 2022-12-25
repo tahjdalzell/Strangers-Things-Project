@@ -1,5 +1,4 @@
-import styled from "styled-components"
-
+import styled from "styled-components";
 
 export const LoginForum = styled.form`
   display: flex;
@@ -11,7 +10,7 @@ export const LoginForum = styled.form`
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-`
+`;
 
 export const LoginButt = styled.button`
   width: 100%;
@@ -22,4 +21,4 @@ export const LoginButt = styled.button`
   color: #fff;
   font-size: 16px;
   cursor: pointer;
-`
+`;

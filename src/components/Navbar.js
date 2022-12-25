@@ -29,9 +29,10 @@ const NavBar = ({ token, setToken, logout }) => {
           <NavbarlinkContainer>
             <NavbarLink to="/">Home</NavbarLink>
             <NavbarLink to="/Post">Post</NavbarLink>
-            <NavbarLink to="/CreatPost">Make Post</NavbarLink>
-            <NavbarLink to="/Profile">Profile</NavbarLink>
-            <NavbarLink to="/Register/">Register</NavbarLink>
+            {token ?(<NavbarLink to="/CreatPost">Make Post</NavbarLink>) :(null)}
+            {token ? (<NavbarLink to="/Profile">Profile</NavbarLink>) :(null)}
+            
+            {!token ? (<NavbarLink to="/Register">Register</NavbarLink>) : (null)}
             {!token ? (
               <NavbarLink to="/Login">Login</NavbarLink>
             ) : (
