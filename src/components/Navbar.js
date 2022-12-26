@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { createContext } from "react";
+// import { createContext } from "react";
 import {
   OpenLinksButton,
   Logo,
@@ -13,7 +13,7 @@ import {
   NavbarLinkExtended,
 } from "./Navbar.style";
 import LogoImg from "./logo.png";
-import { Link, Navigate } from "react-router-dom";
+// import { Link, Navigate } from "react-router-dom";
 
 const NavBar = ({ token, setToken, logout }) => {
   const [extendedNav, setExtendedNav] = useState(false);

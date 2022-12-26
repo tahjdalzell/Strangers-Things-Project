@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import {
@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import Profile from "./components/Profile";
 import Home from "./components/Home";
-import { Message, MessageForm, MessagesList } from "./components/Msger";
+// import { Message, MessageForm, MessagesList } from "./components/Msger";
 import { Post } from "./components/Post";
 import { Login } from "./components/Login";
 import { useState } from "react";

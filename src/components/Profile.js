@@ -1,5 +1,5 @@
 import React, { useState }  from "react";
-import { PostContainer } from "./Post.style";
+// import { PostContainer } from "./Post.style";
 import { APIurl ,apiPost} from "../api";
 import { useEffect } from "react";
 

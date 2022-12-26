@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Home from "./Home";
-import { NavbarLink } from "./Navbar.style";
+// import Home from "./Home";
+// import { NavbarLink } from "./Navbar.style";
 import { LoginForum } from "./Login.style";
 import { LoginButt } from "./Login.style";
 import { useNavigate } from "react-router-dom";
